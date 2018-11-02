@@ -23,7 +23,7 @@ dad. Un seguro de hogar nos cubrirá la pérdida siempre.
   1. Realización de un análisis de riesgos: formal, identificar los riesgos a los que me enfren-  
   to en mi entorno.
   2. Vías de buenas prácticas: checklist donde se comprueban que se han aplicado las políticas que  
-  hemos estudiado. Verificar que todo lo que se exige se cumple (p.ej. ver que ningún empleado 
+  hemos estudiado. Verificar que todo lo que se exige se cumple (p.ej. ver que ningún empleado  
   tiene pegada su passwd en un post-it en el escritorio).
   3. Cumplimiento legislativo: estar al orden de las leyes (p.ej. implementar ley de protección de   
   datos). 

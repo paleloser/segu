@@ -20,12 +20,12 @@ dad. Un seguro de hogar nos cubrirá la pérdida siempre.
 
   Existen tres fuentes que me van a alimentar a la hora de diseñar la política de seguridad:
 
-  1. Realización de un análisis de riesgos: formal, identificar los riesgos a los que me enfren-  
+  1. Realización de un **Análisis de Riesgos**: formal, identificar los riesgos a los que me enfren-  
   to en mi entorno.
-  2. Vías de buenas prácticas: checklist donde se comprueban que se han aplicado las políticas que  
+  2. Vías de **buenas prácticas**: checklist donde se comprueban que se han aplicado las políticas que  
   hemos estudiado. Verificar que todo lo que se exige se cumple (p.ej. ver que ningún empleado  
   tiene pegada su passwd en un post-it en el escritorio).
-  3. Cumplimiento legislativo: estar al orden de las leyes (p.ej. implementar ley de protección de   
+  3. Cumplimiento **legislativo**: estar al orden de las leyes (p.ej. implementar ley de protección de   
   datos). 
 
   Tras diseñar una política adecuada es interesante:
@@ -60,23 +60,93 @@ orientadas a disminuir el impacto.
 
 ### Componentes del Análisis de Riesgos
 
-#### Activos (ejemplo de clase)
+#### Activos
   * Personal
   * Recursos físicos
   * Información Almacenada
   * Información en Tránsito
   * Imagen y reputación
 
-#### Amenazas (ejemplo de clase)
+#### Amenazas
 
 Según su origen:
 
   * Ambientales: agua, frío, calor, incendios, atentado...
   * Suministro: gas, agua...
-  * Personas: atacante externo (perfil menos peligroso, es múcho más peligroso el empleado dehones-  
-  to, error humano).
+  * Personas: atacante externo (perfil menos peligroso), es múcho más peligroso el empleado dehones-  
+  to, error humano.
 
 Según objetivo:
 
   * Personal: ataques a infraestructuras críticas, presas de agua, electricidad, biomédicos...
-  
+  * Recursos físicos: ataques que vayan orientados a dañar recursos físicos, romper equipos...
+  También existen ataques orientados a ganar el acceso a los recursos físicos. Se realizará con-    
+  trol de acceso físico a sistemas que requieran alta seguridad.
+  * Ataque a la información: modificar sus aspectos de autenticidad, integridad, confidencialidad  
+  y disponibilidad (no repudio).
+  * Utilización: ataques de denegación de servicio.
+  * Imagen y reputación: ataque importante para empresas con alto caché, por ejemplo, un defacing  
+  preocupará más a una empresa de ciberseguridad que a otra.
+
+#### Impacto
+
+**Cuantificar el daño** que te haría que una amenaza se materialice sobre un activo (ataque). El pro-  
+blema es que la cuantificación en muchas ocasiones es relativa (no se puede asignar una cifra de €)  
+al daño de un ataque. Si la cuantificación es medible decimos que es absoluta.
+
+#### Vulnerabilidad
+
+**Cuantificar la probabillidad** de que una amenaza se materialice sobre el activo. 
+
+	V = p(amenaza) * p(éxito de la amenaza)
+
+### Metodologías de Análisis de Riesgos
+
+Metodología de Análisis y GEstión de Riesgos IT (MAGERIT). Es la que se aplica en la administración pú-  
+blica de España. Muchas empresas privadas la usan también. De las herramientas de Análisis de Riesgos  
+del CERT se usa Pilar.
+
+### Tabla de Riesgos
+
+| Riesgo 		| Activo 			| Amenaza 				| Impacto 		| Vulnerabilidad
+| ------------- | ----------------- | --------------------- | ------------- | --------------
+| 1				| BBDD 				| Empleado deshonesto	| Muy grave 	| Media  
+| ...			| ...				| ...					| ...			| ...  
+| i 			| Servidor Web		| Atacante externo		| Muy bajo 		| Media  
+
+Los activos los protegeremos en función del coste asociado al impacto de las amenazas. Los costes podrán  
+ser:
+
+1. Directos: tocará reinvertir en equipos, controlar en RRHH, mantenimiento de los equipos...
+2. Indirectos: se aumenta la dificultad de uso, se pueden aplicar restricciones de servicios que complican  
+las prestaciones.
+
+**Statement:** nunca se puede llegar a cubrir el 100% de las amenazas.
+
+Tenemos que diferenciar dos tipos de costes: costes debidos a los impactos no cubiertos y el coste debido a  
+la aseguración de los impactos. Lo ideal es asegurar todos ellos activos cuyo coste de aseguración sea menor  
+o igual al coste de impacto. Es decir, alguien que no haga gastos en seguridad va a estar asumiendo un alto  
+coste en impactos, pero tambiíen alguien que está asegurando absolutamente todo estará aplicando un exceso    
+que le saldrá caro.
+
+
+## Guía de Buenas Prácticas - ISO 27000
+
+* ISO 27001: sistema de gestión de sistemas de la información.
+* ISO 27002: guía de buenas prácticas a implementar en un SGSI => 134 controles. Se pide certificación.
+
+
+## Legislación
+
+* GDPR: reglamento general de protección de datos.
+* LSSI
+* LACSP: administración pública electrónica.
+* PCI-DSS: operaciones con tarjetas de crédito. (Internacional)
+* SOX: seguros
+...
+
+## Certificación y auditoría
+
+Certificación: realizar la checklist hasta cumplir los requisitos para que te den una vez la certificación.
+Auditoría: realizar pruebas periódicas para asegurar que mantienes los requisitos que te concedieron la cer-  
+tificación.

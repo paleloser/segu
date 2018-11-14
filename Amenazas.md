@@ -84,5 +84,10 @@ Cuanto más se sepa del activo, más se podrá personalizar el ataque.
 
 ## Defensas Tecnológicas
 
- * Instalar sólo los servicios que se van a usar.
- * Tener todo actualizado al momento.
+### Nivel de Aplicación
+
+	* Instalar sólo los servicios que se van a usar.
+	* Tener todo actualizado al momento.
+	* Nunca se puede defender correctamente una vulnerabilidad de dia 0.
+	* DEP: Data Execution Prevention. Especifiar al OS qué zonas de memoria pueden ejecutar programas y cuales no.
+	* ASLR: Adress Space Layout Randomization

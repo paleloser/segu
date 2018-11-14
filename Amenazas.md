@@ -63,7 +63,7 @@ Cuanto más se sepa del activo, más se podrá personalizar el ataque.
 ## Ataques Tecnológicos
 
 <pre>
-| - - - - - - - |	La primera vía será atacar una vulnerabilidad en servidores. Cogerse la checklist  
+|	----	----	|	La primera vía será atacar una vulnerabilidad en servidores. Cogerse la checklist  
 |			|	de vulnerabilidades software (XSS, SQLi, CSRF, Overflows...) e ir aplicando ataques  
 |			|	hasta dar con alguna.
 |			|	Otro tipo puede ser mediante ataques a vulnerabilidades conocidas en versiones con-  

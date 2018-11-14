@@ -51,23 +51,24 @@ sevidores falsos (phishing).
 Cuanto más se sepa del activo, más se podrá personalizar el ataque.
 
 	1. Redes Sociales: twitter, Facebook, Instagram. La más importante actualmente para recabar  
-	información actual es LinkedIn.
+	   información actual es LinkedIn.
 	2. Actualizaciones de posición: bien en redes sociales como con dispositivos de deporte, GPS  
-	en cualquiera de sus formas.
+	   en cualquiera de sus formas.
 	3. Metadatos: pueden contener absolutamente TODO. Autor, IP, versión de software de edición,  
-	fechas, dispositivos con que se hizo el documento...
+	   fechas, dispositivos con que se hizo el documento...
 	4. BOE: nombramientos de funcionarios, publicando nombre y DNI de cada persona.
 	5. Mensajes en foros: se cruzan nicknames entre foros varios pudiendo establecer un perfil del  
-	activo. 
+	   activo. 
 
 ## Ataques Tecnológicos
 
+<pre>
 |---------------|	La primera vía será atacar una vulnerabilidad en servidores. Cogerse la checklist  
 |				|	de vulnerabilidades software (XSS, SQLi, CSRF, Overflows...) e ir aplicando ataques  
 |				|	hasta dar con alguna.
 |				|	Otro tipo puede ser mediante ataques a vulnerabilidades conocidas en versiones con-  
 |				|	cretas de software (CVE-NNN-YY para Apache A.B).
-|	APLICACIÓN	|	Finalmente están las condiciones de carrera: cuando hay multiples instancas del mis-  
+|	APLICACIÓN	 | 	 Finalmente están las condiciones de carrera: cuando hay multiples instancas del mis-  
 |				|	mo programa que no manejan bien la concurrencia (revisar más tarde).
 |				|
 |				|	Cuando se descubre la vulnerabilidad se publica el expliot: programa que explota la  
@@ -79,3 +80,4 @@ Cuanto más se sepa del activo, más se podrá personalizar el ataque.
 | -------------	|
 |	  ENLACE	|
 | ------------- |
+</pre>

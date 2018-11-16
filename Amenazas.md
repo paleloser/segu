@@ -62,25 +62,57 @@ Cuanto más se sepa del activo, más se podrá personalizar el ataque.
 
 ## Ataques Tecnológicos
 
-<pre>
-|	---	---	|	La primera vía será atacar una vulnerabilidad en servidores. Cogerse la checklist  
-|			|	de vulnerabilidades software (XSS, SQLi, CSRF, Overflows...) e ir aplicando ataques  
-|			|	hasta dar con alguna.
-|			|	Otro tipo puede ser mediante ataques a vulnerabilidades conocidas en versiones con-  
-|			|	cretas de software (CVE-NNN-YY para Apache A.B).
-|	APLICACIÓN	| 	 Finalmente están las condiciones de carrera: cuando hay multiples instancas del mis-  
-|			|	mo programa que no manejan bien la concurrencia (revisar más tarde).
-|			|
-|			|	Cuando se descubre la vulnerabilidad se publica el expliot: programa que explota la  
-|			|	vulnerabilidad.
-|	---	---	|	
-|	TCP / UDP 	|	
-|	---	---	|	
-|	 RED / IP 	|
-|	---	---	|
-|	  ENLACE	|
-|	---	---	|
-</pre>
+### Nivel de Aplicación
+
+La primera vía será atacar una vulnerabilidad en servidores. Cogerse la checklist de vulnerabilidades  
+software (XSS, SQLi, CSRF, Overflows...) e ir aplicando ataques hasta dar con alguna.  
+
+Otro tipo puede ser mediante ataques a vulnerabilidades conocidas en versiones concretas de software  
+(CVE-NNN-YY para Apache A.B).
+
+Finalmente están las condiciones de carrera: cuando hay multiples instancas del mismo programa que no  
+manejan bien la concurrencia (revisar más tarde).
+
+Cuando se descubre la vulnerabilidad se publica el expliot: programa que explota la vulnerabilidad.
+
+Al final todos los ataques debidos a aplicación se deben a configuraciones de usuario mal imlementadas  
+ó servicios desactualizados.
+
+### Pila de protocolos TCP/IP
+
+No son vulnerabilidades frecuentes, pero las hay.
+
+La vulnerabilidad en el nivel de red puede ser una vulnerabilidad de diseño o de implementación. Ante  
+un fallo de diseño sólo queda rediseñar el protocolo, ya que aplicará a todos.
+Los ataques de implementación son debidos otra vez a que los usuarios implementan mal los protocolos en  
+sus sistemas.
+
+	* MITM
+	* Christmass Day Attack
+
+#### SSL Heartbleed
+
+En SSL las sesiones tienen TIMEOUT por defecto. Existe un modo para mantener la sesión que es mediante  
+hearbeat, es decir, mandar pequeños paquetes de peticiones al servidor solicitando una palabra e indicando  
+la longitud de la palabra. Si introducíamos una longitud de palabra mucho mayor que la que pediamos el  
+servidor acababa devolviéndonos su contenido en memoria.
+
+### Ataques en cliente
+
+Hacer reversing engineering a los programas que corren en cliente a fin de revelar las claves que usan 
+para conectarse a los servidores o para cifrar sus comunicaciones. Estos ataques se pueden hacer en  
+cualquier momento y no podemos controlar, como servidores, cuándo nos lo están haciendo.
+Si alguien revela cómo funciona el programa por dentro se pueden controlar cifrados, hacer respuestas mali-  
+ciosas...
+También se pueden craftear ficheros destinados a abrirse con el programa cliente, de manera que conocida la  
+vulnerabilidad del programa se pueda explotar.
+
+### Remote Code Execution / DoS
+
+Mandar payloads que o causen stack smash o buffer overflow ó causen excepciones y hagan que el servidor se  
+caiga.
+
+	*	DDOS: distributed denial of service, es un DoS causado por exceso de peticiones coordinadas.
 
 ## Defensas Tecnológicas
 
@@ -91,3 +123,16 @@ Cuanto más se sepa del activo, más se podrá personalizar el ataque.
 	* Nunca se puede defender correctamente una vulnerabilidad de dia 0.
 	* DEP: Data Execution Prevention. Especifiar al OS qué zonas de memoria pueden ejecutar programas y cuales no.
 	* ASLR: Adress Space Layout Randomization
+	* Bastionado de Sistemas: revisar todas las configuraciones de los programas asegurando que no tienen  
+	vulnerabilidades. Hay programas dedicados a esto: NESUS, Bastille-Linux...
+
+## Consecuencias de Ataque
+
+	* Ejecución de código malicioso.
+	* DoS
+	* Instalación de un malware: virus, gusano o troyano.
+	* Ransomware.
+
+**NOTA**: un troyano es la instalación de un servidor adicional de manera que aunque se parchee el programa que  
+estaba con la vulnerabilidad inicialmente, seguiremos teniendo acceso a la víctima. Al meterte un troyano pasas  
+a formar parte de una botnet.

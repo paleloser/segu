@@ -112,7 +112,7 @@ vulnerabilidad del programa se pueda explotar.
 Mandar payloads que o causen stack smash o buffer overflow ó causen excepciones y hagan que el servidor se  
 caiga.
 
-	*	DDOS: distributed denial of service, es un DoS causado por exceso de peticiones coordinadas.
+	* DDOS: distributed denial of service, es un DoS causado por exceso de peticiones coordinadas.
 
 ## Defensas Tecnológicas
 
@@ -136,3 +136,13 @@ caiga.
 **NOTA**: un troyano es la instalación de un servidor adicional de manera que aunque se parchee el programa que  
 estaba con la vulnerabilidad inicialmente, seguiremos teniendo acceso a la víctima. Al meterte un troyano pasas  
 a formar parte de una botnet.
+
+### Advanced Persistent Threat (APT)
+
+Se trata de ataques personalizados a un sujeto.
+
+	* Comienzan por la recolección de información: Doxing, OSINT
+	* Intrusión inicial: bien mediante ingeniería social, vulnerabilidades 0 day ó no parcheadas.
+	* Asegurar comunicación continuada.
+	* Búsqueda de información sensible.
+	* Exfiltración de datos. Covert channels (se puede attachear información en un paquete ICMP).

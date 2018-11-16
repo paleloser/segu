@@ -14,9 +14,9 @@ Distinquimos entre controles de acceso lógico y físico.
 
 ### Físico
 
-**Amenazas:**Manipulación y alteración de recursos físicos.  
+**Amenazas**: manipulación y alteración de recursos físicos.  
 **Contramedidas**: establecer zonas de seguridad y establecer fronteras entre zonas. Habrá que  
-prestar atención a las comunicaciones innalámbricas, metiendo sistemas de autenticación adicionales.
+prestar atención a las comunicaciones innalámbricas, metiendo sistemas de autenticación adicionales.  
 Hay ataques más sofisticados como los TEMPEST que consisten en captar la radiación que emite una  
 pantalla para reproducirla en otra.
 
@@ -29,11 +29,11 @@ quien queremos que entre.
 
 ## Sistemas de Autenticación
 
-La vía primaria de autenticación es la visual, por características físicas: **algo que se es**.
+La vía primaria de autenticación es la visual, por características físicas: **algo que se es**.  
 Pero la intención es autenticación en entornos digitales; en este caso usaremos un secreto compar-  
-tido **algo que se sabe**.
+tido **algo que se sabe**.  
 Otro tipo de autenticación es mediante **algo que se tiene**, como pueda ser un DNI, o un segundo  
-factor de autenticación...
+factor de autenticación...  
 También existen técnicas de localización: **sitio donde se está**.
 
 Lo que se recomienda son los sistemas de autenticación fuerte: sistemas de doble factor.

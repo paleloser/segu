@@ -64,12 +64,19 @@ La segunda lámina superior izquierda es la de sincronismo de reloj, la segunda 
 la de reset. Las dos izquierdas (superior e inferior) están reservadas para futuros usos.  
 Queda el segundo contacto inferior izquierdo que va destinado a I/O.
 
-Figura izquierda:
-![alt text](https://www.sbprojects.net/knowledge/footprints/smart/iso-contacts.png "Descripción del chip.")
+![Descripción del chip.](https://www.sbprojects.net/knowledge/footprints/smart/iso-contacts.png "Descripción del chip.")
 
 La CPU es de 8 bits.
 Los tamaños de memoria son: ROM de 8 a 32k, RAM de 256B a 4kB, EEPROM de 1k a 32k
 
 ### Autenticación por algo que se es
 
-Autenticación biométrica: retina, iris, huella, sistema sanguíneo...
+Autenticación biométrica: retina (cada persona tiene una disposición de conos y bastones), iris, huella,  
+sistema sanguíneo, geometría de la mano, facial, ADN.
+
+Retina: se tiene que hacer por láser, lo cual no es válido a largo plazo ya que se daña el ojo.
+Irirs: produce rechazo social a pesar de que funciona bien.
+
+Existe un sitema alternativo que es basado en las características de comportamiento. La voz puede ser un  
+mecanismo pero nunca usado como principal o único, ya que nuestra voz puede variar si estamos malos.
+Otros métodos son el estrés, o el ritmo de tecleo.

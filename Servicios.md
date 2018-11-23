@@ -101,4 +101,4 @@ Los ataques de fuerza bruta se realizan en local para evitar denegación de acce
 * Exigir condiciones en el registro de las claves
 * Esconder el fichero shadow
 
-[! Entropía en las claves](http://imgs.xkcd.com/comics/password_strength.png "La entropía de las claves.")
+![Entropía en las claves.](http://imgs.xkcd.com/comics/password_strength.png "La entropía de las claves.")

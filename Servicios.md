@@ -154,9 +154,9 @@ repetición de reto podrá hacer la impersonación.
 
 * PAP: personal access protocol -> La clave va en claro
 * CHAP: challenge based authentication protocol
-* EAP: extended authenticated protocol
-|--> EAP-MD5
-|--> EAP-OTP
-|--> EAP-GTC
-|--> EAP-TLS
-|--> EAP-TTLS: solo se autentica el servidor
+* EAP: extended authenticated protocol  
+|--> EAP-MD5  
+|--> EAP-OTP  
+|--> EAP-GTC  
+|--> EAP-TLS  
+|--> EAP-TTLS: solo se autentica el servidor  

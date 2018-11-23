@@ -44,7 +44,7 @@ registrada.
 
 Ojo: siempre hay que tener claro que estamos autenticándonos ante un servidor autorizado.
 
-### Algo que se lleva
+### Autenticación por algo que se lleva
 
 Lo más típico son las tarjetas. Este concepto difiere del de _algo que se sabe_ porque el segundo  
 sólo permanece en nuestra memoria, mientras que el primero es físico.
@@ -102,3 +102,61 @@ Los ataques de fuerza bruta se realizan en local para evitar denegación de acce
 * Esconder el fichero shadow
 
 ![Entropía en las claves.](http://imgs.xkcd.com/comics/password_strength.png "La entropía de las claves.")
+
+#### Defensas contra MITM
+
+* Enviar claves cifradas
+* No fiarse de terminales de terceros
+
+NOTA: los protocolos POP3 e IMAP inicialmente iban en claro. Como ellos, inicialmente muchos protocolos no  
+estaban cifrados. Lo que se hizo para arreglarlo fué, en vez de cambiar todos los protocolos para que fuesen  
+cifrados, añadir un wrapper que añadía una capa de cifrado sobre cualquier cosa (SSL/TLS).
+
+## Sistemas de autenticación dinámica
+
+Se basa en utilizar claves de un sólo uso. Son claves de usar y tirar de manera que casi no nos importa si  
+nos la llegan a pillar.
+
+### S/Key
+
+Es un sistema basado en un servidor que, partiendo de una clave maestra elegida por el cliente, genera N  
+hashes consecutivos y se las da al usuario que se va a autenticar. En el proceso de autenticación, el  
+cliente solicita el acceso y será el servidor el que le pida el hash N al cliente, en vez de la clave inicial.  
+En un acceso siguiente, el servidor le pedirá el hash N-1 y así sucesivamente. 
+De este modo, si un atacante se hace con un hash, en el próximo login no le va a servir de nada.
+
+El problema de este mecanismo es que el cliente tiene que almacenar los N hashes, si alguien se hace con el  
+terminal del cliente, está vendido. A su vez, como se genera un número fijo de claves, el uso está acotado.
+
+### Time-based key
+
+El servidor conoce un mecanismo temporal de variación de claves, de forma que cada x tiempo la clave es distinta.  
+El cliente tendrá un dispositivo físico con el mismo mecanismo implementado de tal manera que al darle al botón  
+'generar' del dispositivo, saque por un display la clave.  
+Este sistema se usa como mecanismo de doble factor. (SecureID)
+
+### Uso del Móvil
+
+Mecanismos de doble factor diversos: google authenticator, sms...
+
+### Sistemas de Reto-Respuesta
+
+El usuario solicita autenticación. El servidor responde con el reto X, con lo que el usuario, conocedor de  
+la clave, ha de mandar la respuesta al reto X. El _reto_ se trata de una función criptográfica.
+
+Este sistema tiene dos problemas.
+
+* Repetción de retos: si un atacante sabe la respuesta a un reto porque la ha snifeado antes, ante una  
+repetición de reto podrá hacer la impersonación.
+* Tampoco es un sistema inmune a la captura de la contraseña en el terminal (keylogger). 
+
+## Protocolos de Autenticación
+
+* PAP: personal access protocol -> La clave va en claro
+* CHAP: challenge based authentication protocol
+* EAP: extended authenticated protocol
+|--> EAP-MD5
+|--> EAP-OTP
+|--> EAP-GTC
+|--> EAP-TLS
+|--> EAP-TTLS: solo se autentica el servidor

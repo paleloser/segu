@@ -80,3 +80,25 @@ Irirs: produce rechazo social a pesar de que funciona bien.
 Existe un sitema alternativo que es basado en las características de comportamiento. La voz puede ser un  
 mecanismo pero nunca usado como principal o único, ya que nuestra voz puede variar si estamos malos.
 Otros métodos son el estrés, o el ritmo de tecleo.
+
+### Autenticacion por algo que se sabe
+
+El primer método es informando al servidor del servicio sobre la contraseña. Posteriormente en un login  
+le remitiremos nuesrta contraseña y comprobará que es correcta. En este caso no estamos necesitando ningún  
+periférico, lo que implica que es escalable. Nunca se guarda una clave en claro.
+
+Para poder guardar las claves previamente se le aplica un hash. Como norma, cualquier secreto se tiene que  
+guardar cifrado.
+
+Ataques por man in the middle, bruteforce y shoulder surfing.
+Los ataques de fuerza bruta se realizan en local para evitar denegación de acceso por intentos fallidos.
+
+#### Defensas contra el bruteforce
+	
+* Buenas claves
+* Fáciles de recordar
+* Difíciles de adivinar por un ordenador, con alta entropía
+* Exigir condiciones en el registro de las claves
+* Esconder el fichero shadow
+
+[! Entropía en las claves](http://imgs.xkcd.com/comics/password_strength.png "La entropía de las claves.")

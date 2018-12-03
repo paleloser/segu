@@ -19,3 +19,4 @@ Apuntes de la segunda parte de la asignatura.:
 
 * Control de acceso
 * Sistemas de autenticación (algo que...)
+* Sistemas de autenticación lógicos

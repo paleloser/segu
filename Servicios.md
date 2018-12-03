@@ -228,7 +228,7 @@ los de la empresa B, mientras que si fuese con un sólo servidor el de la empres
 * AAA: Authentication Authoritation Accounting
 * A4C: AAA + Auditability + Charging
 
-** AAA - RADIUS **
+**AAA - RADIUS**
 
 Sólo se establece entre el servidor y el autenticador. La propuesta historicamente más aceptada fué el TACACS. Luego CISCO  
 lo upgradeó a TACACS+ y, para que se convirtiese en un standard no propietario se creó el RADIUS (RFC 2865/66).
@@ -251,7 +251,7 @@ El servicio de accounting no es más que una base de datos en el servidor de aut
 del cliente para luego poder cobrar a medida. El servidor es el que notificará al autenticador acerca del uso del servicio  
 por parte del cliente.
 
-** A4C- DIAMETER **
+**A4C- DIAMETER**
 
 Parte del RADIUS, añadiéndole amplificaciones negociables, es decir, utilicar el mecanismo de RADIUS aplicado de manera  
 específica para ciertos servicios: MOBILE_IP, UMTS, NASREQ. 
@@ -271,3 +271,40 @@ verificador (OpenID provider).
 
 2. SAML: Security, Assertion, MarkUp Language
 3. OAUTH.
+
+## Defensa Perimetral
+
+Existen dos tipos de entornos de defensa perimetral: el perímetro del sistema y el de la red.  
+
+### Sistemas
+#### Cortafuegos personales
+
+Cortafuegos configurados específicamente a cada usuario. Se puede seleccionar bloqueos tanto  
+de entrada como de salida bien por puerto, direcciones o aplicaciones. Esto es rentable en  
+escenarios con pocos sistemas. 
+
+Las grandes desventajas de este mecanismo es que en un entorno grande la administración es  
+mucho más compleja. También jode para entornos donde cada sistema tiene su OS (heterogeneos)  
+y en entornos heredados (Legacy Systems). 
+
+### En Red
+
+El objetivo es aplicar una política de seguridad a un conjunto de sistemas. Primero tendremos  
+que definir lo que significa conjunto.
+
+* Establecer **zonas** de seguridad: estableciendo un conjunto de políticas comunes a dichas  
+zonas/departamentos.
+
+**¿Cómo hacemos un cortafuegos?**
+
+
+1. Cortafuegos de aplicación: nivel 7
+2. Cortafuegos de circuitos: nivel 4
+3. Filtro de paquetes: nivel 3
+4. Cotrafuegos transparente: nivel 2
+
+#### Filtro de Paquetes
+
+Un filtro de paquetes es un router inteligente. Mira las cabeceras de los paquetes que le llegan,  
+compara las cabeceras IP con la tabla de filtrado (Security Table) y verifica si ese paquete ha de  
+ser enrutado (por la ruta que tenga en su iptable) o si ha de ser deshechado.

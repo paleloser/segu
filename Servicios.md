@@ -150,7 +150,7 @@ Este sistema tiene dos problemas.
 repetición de reto podrá hacer la impersonación.
 * Tampoco es un sistema inmune a la captura de la contraseña en el terminal (keylogger). 
 
-## Protocolos de Autenticación
+## Protocolos de Autenticación (Control de acceso Lógico)
 
 * PAP: personal access protocol --> La clave va en claro
 * CHAP: challenge based authentication protocol
@@ -161,3 +161,66 @@ repetición de reto podrá hacer la impersonación.
 |--> EAP-TLS  
 |--> EAP-TTLS: solo se autentica el servidor  
 
+### Single Sign On (SSO) 
+
+Un cliente quiere acceder a un servidor. El servidor solicita una autenticación y cuando el cliente se la  
+provee comprueba que es verídica. Para evitar que el cliente tenga que recordar muchas claves surge un tercer  
+agente que será el que verifique la identidad tanto del servidor como del cliente. El tercer agente, autenticador  
+almacenará las claves privadas de cada uno de tal modo que sea el único en la comunicación capaz de realizar  
+ese trabajo.
+
+Existen dos modos de hacer esta verificación:
+
+* En el primer caso, el cliente/servidor le da la clave privada al verificador, quien le da un token para que use  
+en el momento de la autenticación.
+* El segundo modelo es aceder primero al servidor, ofreciéndole nuestras claves públicas. El servidor le remitirá esa  
+clave pública al autenticador, quien le confirmará que esa clave pública se corresponde con mi identidad.
+
+El primer caso es más seguro ya que no estamos revelando nuestra clave pública ante nadie más que el autenticador.  
+El segundo caso es más cómodo ya que no tenemos que actualizar nuestras aplicaciones, simplemente emitir nuestra clave  
+y que el servidor sea quien haga el resto del trabajo.
+
+#### Verficación antes de los servidores (KERBEROS)
+
+En este escenario tenemos:
+
+* Cliente (U)
+* Servidor (V)
+* S. Autenticador 1: almacena las claves de los servidores (TGS)
+* S. Autenticador 2: almacena las claves de los usuarios (AS)
+
+Cuando el usuario/cliente se loguea en el ordenador por la mañana lo que está haciendo es iniciar una sesión.  
+Al iniciar sesión será el AS quien le ceda un token que tenga una valided por el número de horas que  
+trabaja el usuario (8 horas, por ejemplo). A partir de ahora, cuando el usuario quiera usar un programa del  
+sistema, emitirá una solicitud de uso junto con su token a el TGS. El TGS le emitirá un segundo token de  
+servicio, que le permitirá usar el servicio durante un tiempo. Teniendo ya el toquen de sesión y el de  
+servicio, el cliente ya podrá usar el servicio concreto.
+
+		Usuario  		-------------------- <ID_U, ID_TGS, T1> ---------------------> AS
+    <ID_U, Ku, ADDRu> 	<------- <E_K-U(TIC_TGS, K_U-TGS, ID_TGS, T2, LT2)> -----------
+
+    		TIC_TGS: <E_K-TGS(ID_U, ADDR_U, K_U-TGS, ID_TGS, T2, LT2)>
+
+TIC_TGS: Es a su vez un conjunto cifrado con la clave del servicio que contendrá <ID_U, ADDR_U, K_U-TGS, ID_TGS, T2, LT2>
+Así, cuando el cliente reciba el paquete del AS, podrá descifrar con su clave la clave de sesión conjunta con el servicio  
+(K_U-TGS), la duración de la sesión (LT2), el identificador del servidor de autenticación (ID_TGS) y el conjunto cifrado.  
+Precisamente por la encriptación de dicho conjunto, se lo podrá reenviar al TGS, para que este lo descifre con su clave  
+y pueda conocer la clave común K_U-TGS y la dirección del cliente que la comparte (ADDR_U). También conocerá la duración  
+de la clave y los identificadores.
+
+    Usuario --------------------- <ID_V, TIC_TGS, AUTH_U > ------------> TGS
+    		<----------------- <E_K-U(TIC_V, K_U-V, ID_V, T4)> ---------- 
+
+    		AUTH_U: E_K_U-TGS(ID_U, ADDR_U, T3)
+    		TIC_V: <E_K-V(ID_U, ADDR_U, K_U-V, ID_V, T4, LT4)>
+
+Ahora se repite el mismo proceso con el servidor de autenticación de servicios, generándose la clave entre el servicio y  
+cliente (K_U-V) que servirá para cifrar la comunicación entre ambos.
+
+¿ Por qué usamos dos servidores de autenticación y no uno?
+
+La respuesta es la _federación_: teniendo servidores de servicios separados de los de clientes, usuarios de una empresa A  
+podrían usar servicios de otra empresa B. De este modo, con servidores separados, los de la empresa A no tienen que saber  
+los de la empresa B, mientras que si fuese con un sólo servidor el de la empresa A tendría que saber las claves del B.
+
+#### Verificación después del servidor (HTTPS)

@@ -223,4 +223,51 @@ La respuesta es la _federación_: teniendo servidores de servicios separados de 
 podrían usar servicios de otra empresa B. De este modo, con servidores separados, los de la empresa A no tienen que saber  
 los de la empresa B, mientras que si fuese con un sólo servidor el de la empresa A tendría que saber las claves del B.
 
-#### Verificación después del servidor (HTTPS)
+#### Verificación después del servidor
+
+* AAA: Authentication Authoritation Accounting
+* A4C: AAA + Auditability + Charging
+
+** AAA - RADIUS **
+
+Sólo se establece entre el servidor y el autenticador. La propuesta historicamente más aceptada fué el TACACS. Luego CISCO  
+lo upgradeó a TACACS+ y, para que se convirtiese en un standard no propietario se creó el RADIUS (RFC 2865/66).
+
+En el handshake del RADIUS se sigue el siguiente orden:
+
+1. ACCESS REQUEST: el servidor lo manda al autenticador, conteniendo el UID y la clave del usuario cifrada E(k)
+2. ACCESS ACCEPT/DENY: según la vericidad de la clave, le responde el autenticador al servidor. En esta respuesta se envían  
+atributos/parámetros para configurar en la red del servidor - cliente, esos atributos pueden ser tipo de servicio, dirección  
+IP, parámetros específicos del vendor...  
+
+También se puede usar una autenticación basada en retos:
+
+1. ACCESS REQUEST -> 
+2. ACCESS CHALLENGE <-
+3. ACCESS REQUEST ->
+4. ACCESS ACCEPT/DENY <-
+
+El servicio de accounting no es más que una base de datos en el servidor de autenticación donde se va registrando el uso  
+del cliente para luego poder cobrar a medida. El servidor es el que notificará al autenticador acerca del uso del servicio  
+por parte del cliente.
+
+** A4C- DIAMETER **
+
+Parte del RADIUS, añadiéndole amplificaciones negociables, es decir, utilicar el mecanismo de RADIUS aplicado de manera  
+específica para ciertos servicios: MOBILE_IP, UMTS, NASREQ. 
+
+#### SSO En entornos WEB
+
+1. OpenID: login with facebook, Google... Es una comunicación triangular entre cliente - servidor -  
+verificador (OpenID provider).
+
+  C ---------------- (OpenID) --------------> S
+  C <----------------- 303 ------------------ S
+
+  C ---- Auth. Req ---> V -- Init. Assoc. --> S
+  C <-- Sign. Assoc. -- V <-- Assoc. Keys --- S
+  
+  C -------------- Sign. Assert. -----------> S
+
+2. SAML: Security, Assertion, MarkUp Language
+3. OAUTH.

@@ -261,13 +261,13 @@ específica para ciertos servicios: MOBILE_IP, UMTS, NASREQ.
 1. OpenID: login with facebook, Google... Es una comunicación triangular entre cliente - servidor -  
 verificador (OpenID provider).
 
-  C ---------------- (OpenID) --------------> S
-  C <----------------- 303 ------------------ S
+  C ---------------- (OpenID) --------------> S  
+  C <----------------- 303 ------------------ S  
 
-  C ---- Auth. Req ---> V -- Init. Assoc. --> S
-  C <-- Sign. Assoc. -- V <-- Assoc. Keys --- S
+  C ---- Auth. Req ---> V -- Init. Assoc. --> S  
+  C <-- Sign. Assoc. -- V <-- Assoc. Keys --- S  
   
-  C -------------- Sign. Assert. -----------> S
+  C -------------- Sign. Assert. -----------> S  
 
 2. SAML: Security, Assertion, MarkUp Language
 3. OAUTH.

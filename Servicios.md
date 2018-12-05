@@ -326,22 +326,22 @@ Existen dos tipos de denegación de paquetes: DROP (tirar directamente el paquet
 * Politica permisiva: dejar que los usuarios de la red accedan donde quieran añadiendo excepciones.
 * Política restrictiva: no dear que los usuatios se conecten a ningún lado excepto a algún sitio.
 
-2. src.addr: intranet, dest.addr: any, app: online_games, time: working_hours, action: REJECT
-  -> No dejar a los usuarios jugar en horario de oficina.
-3. src.addr: intranet, dest.addr: any, app: any, time: any, action: ACCEPT
-  -> Regla general. Como antes de esta está la restrictiva de juegos online, esa ya queda filtrada.
+2. src.addr: intranet, dest.addr: any, app: online_games, time: working_hours, action: REJECT  
+  -> No dejar a los usuarios jugar en horario de oficina.  
+3. src.addr: intranet, dest.addr: any, app: any, time: any, action: ACCEPT  
+  -> Regla general. Como antes de esta está la restrictiva de juegos online, esa ya queda filtrada.  
 
 **REGLAS DE ENTRADA**
 
 Para la entrada la única política posible es la restrictiva.
 
-4. src.addr: any, dest.addr: web_server, app: web (80, 443), time: any, action: ACCEPT
-  -> Que se pueda entrar a la web desde fuera
-5. src.addr: any, dest.addr: mail_server, app: mail (smtp), time: any, action: ACCEPT
-  -> Que se pueda acceder al servidor de correo desde fuera
-6. src.addr: IP_X, dest.addr: IP_A, app: ssh, time: working_hours, action: ACCEPT
-  -> Que una persona en concreto pueda acceder por ssh a un sistema
-7. src.addr: any, dest.addr: any, app: any, time: any, action: DROP
-  -> Regla general de rechazar todas las conexiones entrantes restantes. 
+4. src.addr: any, dest.addr: web_server, app: web (80, 443), time: any, action: ACCEPT  
+  -> Que se pueda entrar a la web desde fuera  
+5. src.addr: any, dest.addr: mail_server, app: mail (smtp), time: any, action: ACCEPT  
+  -> Que se pueda acceder al servidor de correo desde fuera  
+6. src.addr: IP_X, dest.addr: IP_A, app: ssh, time: working_hours, action: ACCEPT  
+  -> Que una persona en concreto pueda acceder por ssh a un sistema  
+7. src.addr: any, dest.addr: any, app: any, time: any, action: DROP  
+  -> Regla general de rechazar todas las conexiones entrantes restantes.   
 
 OJO: siempre hay que incluir las reglas generales.

@@ -345,3 +345,19 @@ Para la entrada la única política posible es la restrictiva.
   -> Regla general de rechazar todas las conexiones entrantes restantes.   
 
 OJO: siempre hay que incluir las reglas generales.
+
+### Cortafuegos Transparentes
+
+Son bridges inteligentes, capaces de interpretar el contenido de las tramas. El beneficio de estos  
+firewalls es que al trabajar a nivel 2 no tiene dirección IP, por lo que es completamente transparente  
+a un escaneo de red. 
+
+### Cortafuegos de nivel 7: Proxy de Aplicación
+
+Vamos a hacer _trampas_ en la arquitectura.  
+
+* Forzaremos a que el firewall no haga encaminamiento IP:
+  Esto suena completamente random en un Firewall ya que se le exige enrutado para no cortar el internet.  
+  Para solventar esto, el Firewall acepta paquetes de aplicación dirigidos a él, así que acaba actuando  
+  como proxy recibiendo los paquetes hasta el nivel de aplicación y enviándolos él como suyos hacia el  
+  destino.

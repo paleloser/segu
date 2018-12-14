@@ -303,7 +303,7 @@ zonas/departamentos.
 3. Filtro de paquetes: nivel 3
 4. Cotrafuegos transparente: nivel 2
 
-#### Filtro de Paquetes
+#### Filtro de Paquetes -> FW Transparente
 
 Un filtro de paquetes es un router inteligente. Mira las cabeceras de los paquetes que le llegan,  
 compara las cabeceras IP con la tabla de filtrado (Security Table) y verifica si ese paquete ha de  
@@ -361,3 +361,108 @@ Vamos a hacer _trampas_ en la arquitectura.
   Para solventar esto, el Firewall acepta paquetes de aplicación dirigidos a él, así que acaba actuando  
   como proxy recibiendo los paquetes hasta el nivel de aplicación y enviándolos él como suyos hacia el  
   destino.
+
+### Cortafuegos con NAT
+
+Hacer una NAT de manera que desde el exterior de la red se ven sólo ciertas direcciónes, mientras que dentro  
+de ella hay otras.
+
+	-> No tiene sentido aplicar NAT sobre un cortafuegos que actúa como Proxy de Aplicación
+
+### Con Balanceo de Carga
+### Proxy Transparente
+
+1. Captura todo el tráfico que pasa por él.
+2. Falsifica su dirección IP origen, respondiendo en nombre de otros clientes (para hacer que sea transparente).
+
+Traceroute?
+
+### Deep Packet Inspection
+Se aplican reglas de parámetros para cada tipo de servicio: cabeceras IP, TCP/UDP, contexto...
+
+## Seguridad de Contenidos
+
+### Filtrado WWW
+
+* URL destino:
+	1. Según Wildards (\*sex\*.com)
+	2. Según lista blanca: sólo se deja entrar a X URLS, o negra: te dejo entrar a todas menos a X URLS
+* Método: GET, POST...
+* Categoría del URL (categorizar el contenido de un sitio). Para esto se usa un servidor UFP, que es un  
+servidor dedicado a categorizar las páginas web.
+* Acciones específicas: hacer redirects, bloquear lenguajes (java, javascript), dejar pasar, tirar, dejar pasar  
+y correr un antivirus.
+
+### Filtrado FTP
+
+* Acción específica: pasar un antivirus en el tránsito.
+
+### Filtrado SMTP
+
+* Parámetros: remitente, dominio, destino...
+* Verificación de cabeceras fraudulentas.
+* Acciones específicas: reasignar remitente/destinatario, quitar attachments, ocultar partes del correo en plano.
+
+## Arquitectura de Defensa Perimetral
+
+### Bastionado de Sistemas
+
+* Tener todos los sistemas actualizados, tanto los sistemas operativos como los servicios que están corriendo.
+	=> Automatizar las actualizaciones de seguridad.
+* Un bastión no debe tener cuentas de usuarios personales. Sólo tener la cuenta de root de ESE sistema.
+* No debe tener servicios no necesarios. Cuantos más servicios tenga más vulnerabilidades posibles.
+* Cortafuegos personales.
+* Backups actualizados y fuera de línea.
+* Guardar logs
+* Utilizar auditoría de sistemas.
+
+### IDS
+
+Sistemas que monitorizan eventos buscando síntomas de intrusiones. 
+
+1. Tráfico
+ * NIDS: Network based IDS (sondas de tráfico), actúan en modo promisc. SNORT, SURICATA, BRO
+ * NNIDS: Network node based IDS. No es en modo promiscuo. Protege su sistema.
+
+2. Sistemas
+ * HIDS: Host based IDS. Miran el comportamiento de los procesos de un sistema. OSSEC, WAZUH
+ * AIDS: application-based IDS
+
+3. Reglas predefinidas de comportamientos anómalos.
+4. Detección de anomalías mediante Machine Learning
+
+### IPS
+
+IDS + acciones preventivas
+
+### HONEYPOTS
+
+
+## Protección de información en tránsito
+
+Tenemos la conversación entre Alice y Bob. Enumeramos los tipos de ataques a la comunicación:
+
+* Confidencialidad: ecuchar la conversación.
+* Autenticidad: suplantación de identidad.
+* Integridad: modificar la info en tránsito.
+* Disponibilidad: denegar el servicio.
+
+A demás encontramos dos ataques derivados: cuando los propios _conterulios_ son atacantes entre sí:
+
+1. Ataques de repudio:
+	* De TX: A transmite un mensaje a B y posteriormente repudia la transmisión alegando que ha sido atacado (falsamente)
+	* De RX: A transmite a B, que tras haberlo recibido le niega a A que lo ha recibido.
+
+### Contraedidas
+
+Defender el medio de transmisión? -> Inviable excepto en entornos muy exigentes.
+Asegurar las counicaciones -> Cifrado de comunicaciones + Firma digital.
+
+Lo que haremos será cifrar y firmar los protocolos que ya tenemos.
+
+* Subred: No protege extremo a extremo sino que lo hace sobre segmentos individuales.
+* IP: sí protege extremo a extremo (OJO: lo que se cifra es el contenido del paqueta, las cabeceras no).  
+el problema aqui es que aplica a todas las conexiones, sin poder elegir.
+* Transporte: también es extremo a extremo y aqui podemos elegir qué aplicaciones se cifran y qué no.  
+Como parte negativa, las aplicaciones tienen que soportar transporte seguro.
+* Aplicación: cada aplicación se cifra su propio contenido.

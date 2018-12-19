@@ -453,7 +453,7 @@ A demás encontramos dos ataques derivados: cuando los propios _conterulios_ son
 	* De TX: A transmite un mensaje a B y posteriormente repudia la transmisión alegando que ha sido atacado (falsamente)
 	* De RX: A transmite a B, que tras haberlo recibido le niega a A que lo ha recibido.
 
-### Contraedidas
+### Contramedidas
 
 Defender el medio de transmisión? -> Inviable excepto en entornos muy exigentes.
 Asegurar las counicaciones -> Cifrado de comunicaciones + Firma digital.
@@ -466,3 +466,72 @@ el problema aqui es que aplica a todas las conexiones, sin poder elegir.
 * Transporte: también es extremo a extremo y aqui podemos elegir qué aplicaciones se cifran y qué no.  
 Como parte negativa, las aplicaciones tienen que soportar transporte seguro.
 * Aplicación: cada aplicación se cifra su propio contenido.
+
+### Servicios de cifrado
+
+* Aplicación: SNMP v3, S/MIME, WS-Security...
+* Transporte: TLS/SSL
+* Red: IPSEC
+* Enlace: WPA, WPA2, WPA3...
+
+### IPSEC
+
+Se implementa entre el nivel de enlace y el de red, manteniendo intactas las cabeceras de TCP/UDP y IP.  
+Por esto se le llama un protocolo de nivel 3.5 (ni 4 ni 3).  
+
+![IPSEC.](https://images.slideplayer.com/27/9218572/slides/slide_7.jpg "IPSEC.")
+
+Tiene dos modos:  
+
+* Autenticación e integridad (Authenticated Header): para firma digital  
+* Cifrado y confidencialidad (Encapsulating Security Payload): para cifrado  
+
+#### IPSEC - AH
+
+Se agrega un campo _ICV_ que viene a ser una firma digital Hash + Cifrado, generado con la información del paquete TCP  
+y las cabeceras de IP (sólo los campos que no se modifican en tránsito, no irían TTL, flags, checksum...) y de IPSEC.  
+
+Como vemos, en el hash se están pasando las direcciones de origen y destino, por lo que IPSEC es incompatible con NAT.  
+
+![IPSEC - AH](https://www.researchgate.net/profile/Shahid_Raza2/publication/220975045/figure/fig1/AS:393975283372044@1470942435853/IPsec-AH-headers.png "IPSEC - AH") 
+
+#### IPSEC - ESP
+
+Se cifra todo el contenido TCP + ciertos campos de la cabecera IPSEC. Se dejan 2 campos de la cabecera IPSEC sin cifrar  
+para indicar el mecanismo de cifrado que lleva y poder descifrarlo luego.  
+
+![IPSEC - ESP](https://cromwell-intl.com/networking/pictures/ipsec-diagram2.png "IPSEC - ESP")
+
+En este mecanismo debe existir una negociación previa. (NOTA: la seguridad siempre se negocia, nunca se impone).  
+La negociación se realiza con un subprotocolo de IPSEC: ISAKMP, teniendo como resultado una asociación de seguridad (SA).  
+
+Componentes de la SA:  
+
+* AH/ESP security information (según el modo que se esté usando):  
+	1. Longitud de las claves.  
+	2. Algoritmos de cifrado.  
+	3. Tiempo de vida de las claves.  
+	4. ...  
+* Duración del contrato: en tiempo o espacio de almacenamiento.  
+* Número de secuencia.  
+* Actuación cuando se llega al límite del número de secuencia.  
+	1. Parar la conversación.  
+	2. Poner el contador a cero.  
+* Modo IPSEC.  
+	1. Transport: cuando lo implementamos entre sistemas finales.  
+	2. Tunnel: cuando lo implementamos entre extremos de red (routers de salida a la red) 
+	![Transport vs Tunnel](https://i.stack.imgur.com/7f8eY.jpg "Transport vs Tunnel") 
+* Path MTU.  
+
+Al final lo que se tiene es una base de datos de contratos y otra de nodos, de manera que tenemos un contrato (SA) asociado para  
+cada nodo. Apuntaremos el nodo final, el contrato, y el modo de IPSEC que se está usando: Security Policy Database.  
+
+#### Internet Key Exchange (IKE)
+
+Utiliza el protocolo ISAKMP:  
+
+* Autenticación de extremos:  
+	1. PSK: clave precompartida.  
+	2. PKI: public key infrastructure.
+* Negociar servicios de seguridad.  
+* Generar clave compartida (por DH).  

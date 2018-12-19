@@ -421,12 +421,12 @@ y correr un antivirus.
 Sistemas que monitorizan eventos buscando síntomas de intrusiones. 
 
 1. Tráfico
- * NIDS: Network based IDS (sondas de tráfico), actúan en modo promisc. SNORT, SURICATA, BRO
- * NNIDS: Network node based IDS. No es en modo promiscuo. Protege su sistema.
+	* NIDS: Network based IDS (sondas de tráfico), actúan en modo promisc. SNORT, SURICATA, BRO
+	* NNIDS: Network node based IDS. No es en modo promiscuo. Protege su sistema.
 
 2. Sistemas
- * HIDS: Host based IDS. Miran el comportamiento de los procesos de un sistema. OSSEC, WAZUH
- * AIDS: application-based IDS
+	* HIDS: Host based IDS. Miran el comportamiento de los procesos de un sistema. OSSEC, WAZUH
+	* AIDS: application-based IDS
 
 3. Reglas predefinidas de comportamientos anómalos.
 4. Detección de anomalías mediante Machine Learning
@@ -532,6 +532,12 @@ Utiliza el protocolo ISAKMP:
 
 * Autenticación de extremos:  
 	1. PSK: clave precompartida.  
-	2. PKI: public key infrastructure.
+	2. PKI: public key infrastructure.  
 * Negociar servicios de seguridad.  
 * Generar clave compartida (por DH).  
+
+### TLS
+
+* Autenticación de servidor siempre.  
+* Opcional: autenticación de cliente.  
+* Cifrado.

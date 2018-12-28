@@ -57,11 +57,6 @@ Ejemplo:
   | ... | ... | ... | ... |
   | Servidor web | Atacante externo | Bajo | Media/Alta |
 
-  (1) Activo: Rec. Físicos, Amenaza: Incendio, Impacto: Total, Vulnerabilidad: Media.  
-  (2) Activo: BBDD, Amenaza: Empleado deshonesto, Impacto: Muy grave, Vulnerabilidad: Alta.  
-  ...  
-  (q) Activo: Servidor Web, Amenaza: Atacante externo, Impacto: Bajo, Vulnerabilidad: Media - Alta.  
-
 Tendremos que tomar medidas para disminuir el Factor de Riesgo: o disminuir el impacto, o medidas.  
 orientadas a disminuir el impacto.
 
@@ -115,11 +110,11 @@ del CERT se usa Pilar.
 
 ### Tabla de Riesgos
 
-| Riesgo 		| Activo 			| Amenaza 				| Impacto 		| Vulnerabilidad |
-| :------------- | ::-----------------: | :---------------------: | :-------------: | --------------: |
-| 1				| BBDD 				| Empleado deshonesto	| Muy grave 	| Media  |
-| ...			| ...				| ...					| ...			| ...  |
-| i 			| Servidor Web		| Atacante externo		| Muy bajo 		| Media  |
+| Riesgo | Activo | Amenaza | Impacto | Vulnerabilidad |
+| :--- | :---: | :---: | :---: | ---: |
+| 1	| BBDD | Empleado deshonesto | Muy grave | Media |
+| ...	| ...	| ...	| ...	| ... |
+| i | Servidor Web | Atacante externo	| Muy bajo | Media |
 
 Los activos los protegeremos en función del coste asociado al impacto de las amenazas. Los costes podrán  
 ser:

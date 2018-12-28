@@ -318,7 +318,9 @@ Existen dos tipos de denegación de paquetes: DROP (tirar directamente el paquet
 
 **PROTECCIÑON DEL FIREWALL**
 
-1. src.addr: any, dest.addr: firewall_addrs, app: any, time: any, action: DROP  
+| src.addr | dest.addr | app | time | action |
+| :--- | :--- | :--- | :--- | :--- |
+| any | firewall | any | any | drop |
   -> Todos los paquetes destinados al firewall al palco => solo mgmt fisico
 
 **REGLA DE SALIDA**
@@ -326,7 +328,7 @@ Existen dos tipos de denegación de paquetes: DROP (tirar directamente el paquet
 * Politica permisiva: dejar que los usuarios de la red accedan donde quieran añadiendo excepciones.
 * Política restrictiva: no dear que los usuatios se conecten a ningún lado excepto a algún sitio.
 
-2. src.addr: intranet, dest.addr: any, app: online_games, time: working_hours, action: REJECT  
+1. src.addr: intranet, dest.addr: any, app: online_games, time: working_hours, action: REJECT  
   -> No dejar a los usuarios jugar en horario de oficina.  
 3. src.addr: intranet, dest.addr: any, app: any, time: any, action: ACCEPT  
   -> Regla general. Como antes de esta está la restrictiva de juegos online, esa ya queda filtrada.  

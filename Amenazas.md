@@ -83,12 +83,12 @@ Al final todos los ataques debidos a aplicación se deben a configuraciones de u
 No son vulnerabilidades frecuentes, pero las hay.
 
 La vulnerabilidad en el nivel de red puede ser una vulnerabilidad de diseño o de implementación. Ante  
-un fallo de diseño sólo queda rediseñar el protocolo, ya que aplicará a todos.
+un fallo de diseño sólo queda rediseñar el protocolo, ya que aplicará a todos. 
 Los ataques de implementación son debidos otra vez a que los usuarios implementan mal los protocolos en  
 sus sistemas.
 
-	* MITM
-	* Christmass Day Attack
+* MITM
+* Christmass Day Attack
 
 #### SSL Heartbleed
 
@@ -99,7 +99,7 @@ servidor acababa devolviéndonos su contenido en memoria.
 
 ### Ataques en cliente
 
-Hacer reversing engineering a los programas que corren en cliente a fin de revelar las claves que usan 
+Hacer reverse engineering a los programas que corren en cliente a fin de revelar las claves que usan 
 para conectarse a los servidores o para cifrar sus comunicaciones. Estos ataques se pueden hacer en  
 cualquier momento y no podemos controlar, como servidores, cuándo nos lo están haciendo.
 Si alguien revela cómo funciona el programa por dentro se pueden controlar cifrados, hacer respuestas mali-  
@@ -112,26 +112,26 @@ vulnerabilidad del programa se pueda explotar.
 Mandar payloads que o causen stack smash o buffer overflow ó causen excepciones y hagan que el servidor se  
 caiga.
 
-	* DDOS: distributed denial of service, es un DoS causado por exceso de peticiones coordinadas.
+* DDOS: distributed denial of service, es un DoS causado por exceso de peticiones coordinadas.
 
 ## Defensas Tecnológicas
 
 ### Nivel de Aplicación
 
-	* Instalar sólo los servicios que se van a usar.
-	* Tener todo actualizado al momento.
-	* Nunca se puede defender correctamente una vulnerabilidad de dia 0.
-	* DEP: Data Execution Prevention. Especifiar al OS qué zonas de memoria pueden ejecutar programas y cuales no.
-	* ASLR: Adress Space Layout Randomization
-	* Bastionado de Sistemas: revisar todas las configuraciones de los programas asegurando que no tienen  
-	vulnerabilidades. Hay programas dedicados a esto: NESUS, Bastille-Linux...
+* Instalar sólo los servicios que se van a usar.
+* Tener todo actualizado al momento.
+* Nunca se puede defender correctamente una vulnerabilidad de dia 0.
+* DEP: Data Execution Prevention. Especifiar al OS qué zonas de memoria pueden ejecutar programas y cuales no.
+* ASLR: Adress Space Layout Randomization
+* Bastionado de Sistemas: revisar todas las configuraciones de los programas asegurando que no tienen  
+vulnerabilidades. Hay programas dedicados a esto: NESUS, Bastille-Linux...
 
 ## Consecuencias de Ataque
 
-	* Ejecución de código malicioso.
-	* DoS
-	* Instalación de un malware: virus, gusano o troyano.
-	* Ransomware.
+* Ejecución de código malicioso.
+* DoS
+* Instalación de un malware: virus, gusano o troyano.
+* Ransomware.
 
 **NOTA**: un troyano es la instalación de un servidor adicional de manera que aunque se parchee el programa que  
 estaba con la vulnerabilidad inicialmente, seguiremos teniendo acceso a la víctima. Al meterte un troyano pasas  

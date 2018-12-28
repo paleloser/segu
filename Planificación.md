@@ -111,7 +111,7 @@ del CERT se usa Pilar.
 ### Tabla de Riesgos
 
 | Riesgo | Activo | Amenaza | Impacto | Vulnerabilidad |
-| :--- | :---: | :---: | :---: | ---: |
+| :--- | :--- | :--- | :--- | :--- |
 | 1	| BBDD | Empleado deshonesto | Muy grave | Media |
 | ...	| ...	| ...	| ...	| ... |
 | i | Servidor Web | Atacante externo	| Muy bajo | Media |

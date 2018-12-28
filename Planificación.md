@@ -12,35 +12,35 @@ intrusiones, nunca podremos evitar al atacante profesional que conoce absolutame
 las maneras de sobrepasar esas defensas. Es entonces donde se ve el segundo tipo de seguri-  
 dad. Un seguro de hogar nos cubrirá la pérdida siempre.
   
-  * Firewall: tipo 1
-  * Backup: tipo 2
-  * Elaboración de planes de contingencia: incluye el tipo 2 y lo extiende. Agrega planificación
+* Firewall: tipo 1
+* Backup: tipo 2
+* Elaboración de planes de contingencia: incluye el tipo 2 y lo extiende. Agrega planificación
 
 ### ¿Cómo hacemos una planificación? Diseñar una política de seguridad.
 
-  Existen tres fuentes que me van a alimentar a la hora de diseñar la política de seguridad:
+Existen tres fuentes que me van a alimentar a la hora de diseñar la política de seguridad: 
 
-  1. Realización de un **Análisis de Riesgos**: formal, identificar los riesgos a los que me enfren-  
-  to en mi entorno.
-  2. Vías de **buenas prácticas**: checklist donde se comprueban que se han aplicado las políticas que  
-  hemos estudiado. Verificar que todo lo que se exige se cumple (p.ej. ver que ningún empleado  
-  tiene pegada su passwd en un post-it en el escritorio).
-  3. Cumplimiento **legislativo**: estar al orden de las leyes (p.ej. implementar ley de protección de   
-  datos). 
+1. Realización de un **Análisis de Riesgos**: formal, identificar los riesgos a los que me enfren-  
+to en mi entorno.
+2. Vías de **buenas prácticas**: checklist donde se comprueban que se han aplicado las políticas que  
+hemos estudiado. Verificar que todo lo que se exige se cumple (p.ej. ver que ningún empleado  
+tiene pegada su passwd en un post-it en el escritorio).
+3. Cumplimiento **legislativo**: estar al orden de las leyes (p.ej. implementar ley de protección de   
+datos). 
 
-  Tras diseñar una política adecuada es interesante:
+Tras diseñar una política adecuada es interesante:
 
-  * Certificar la política (ISO).
-  * Auditarla y verificar su validez.
+* Certificar la política (ISO).
+* Auditarla y verificar su validez.
 
 ## Análisis de Riesgos
 
 Un análisis de riesgos se basa en la ejecución del _Ciclo de Seguridad_:
 
-  * Identificar los activos: ¿qué tienes que puede ser atacado? (SW, HW, personal...)
-  * Amenazas sobre los activos: ¿qué amenazas se aplican a cada activo? (atacantes, naturales...)
+* Identificar los activos: ¿qué tienes que puede ser atacado? (SW, HW, personal...)
+* Amenazas sobre los activos: ¿qué amenazas se aplican a cada activo? (atacantes, naturales...)
 	- Identificar tipos de amenazas y nuestro grado de vulnerabilidad a cada amenaza: riesgo
-  * Daño / impacto resultante de una amenaza efectiva: ¿qué ocurre si la amenaza se efectúa?
+* Daño / impacto resultante de una amenaza efectiva: ¿qué ocurre si la amenaza se efectúa?
 
 Ciclo: Activos sujeto a amenazas a las que tengo una vulnerabilidad, que nos generarían un cierto  
 impacto.
@@ -108,11 +108,11 @@ del CERT se usa Pilar.
 
 ### Tabla de Riesgos
 
-| Riesgo 		| Activo 			| Amenaza 				| Impacto 		| Vulnerabilidad
-| ------------- | ----------------- | --------------------- | ------------- | --------------
-| 1				| BBDD 				| Empleado deshonesto	| Muy grave 	| Media  
-| ...			| ...				| ...					| ...			| ...  
-| i 			| Servidor Web		| Atacante externo		| Muy bajo 		| Media  
+| Riesgo 		| Activo 			| Amenaza 				| Impacto 		| Vulnerabilidad |
+| :------------- | ::-----------------: | :---------------------: | :-------------: | --------------: |
+| 1				| BBDD 				| Empleado deshonesto	| Muy grave 	| Media  |
+| ...			| ...				| ...					| ...			| ...  |
+| i 			| Servidor Web		| Atacante externo		| Muy bajo 		| Media  |
 
 Los activos los protegeremos en función del coste asociado al impacto de las amenazas. Los costes podrán  
 ser:

@@ -51,12 +51,12 @@ Factor de importancia.
 Ejemplo:
 
   | Activo | Amenaza | Impacto | Vulnerabilidad |
-  | :---: | :---: | :---: | :---: |
+  | :--- | :--- | :--- | :--- |
   | Recursos físicos | Incendio | Total | Media |
   | Bases de Datos | Empleado deshonesto | Muy grave | Alta |
   | ... | ... | ... | ... |
   | Servidor web | Atacante externo | Bajo | Media/Alta |
-  
+
   (1) Activo: Rec. Físicos, Amenaza: Incendio, Impacto: Total, Vulnerabilidad: Media.  
   (2) Activo: BBDD, Amenaza: Empleado deshonesto, Impacto: Muy grave, Vulnerabilidad: Alta.  
   ...  

@@ -316,7 +316,7 @@ por identidad, pero eso no es viable.
 
 Existen dos tipos de denegación de paquetes: DROP (tirar directamente el paquete) y por ICMP-REJECT 
 
-**PROTECCIÑON DEL FIREWALL**
+**PROTECCIÓN DEL FIREWALL**
 
 | src.addr | dest.addr | app | time | action |
 | :--- | :--- | :--- | :--- | :--- |
